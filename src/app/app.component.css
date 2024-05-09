@@ -1,0 +1,11 @@
+.mainContent {
+  height: calc(100dvh - 64px);
+  background-color: var(--background-color);
+}
+
+mat-sidenav {
+  width: 230px;
+  display: block;
+  border-left: 1px solid var(--border);
+  background-color: var(--bg);
+}

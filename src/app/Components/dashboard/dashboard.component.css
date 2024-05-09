@@ -1,0 +1,27 @@
+section {
+  width: 100%;
+  height: 100%;
+}
+
+.ag-theme-quartz {
+  /* Changes the color of the grid text */
+  --ag-foreground-color: var(--bgHeader);
+  /* Changes the color of the grid background */
+  --ag-background-color: var(--bg);
+  /* Changes the header color of the top row */
+  --ag-header-background-color: var(--bg);
+  /* Changes the hover color of the row*/
+  --ag-row-hover-color: var(--active);
+
+  --ag-wrapper-border-radius: 10px;
+
+  --ag-border-color: var(--border);
+}
+
+.ag-ltr {
+  direction: rtl !important;
+}
+
+.ag-theme-quartz .ag-ltr {
+  direction: rtl;
+}
