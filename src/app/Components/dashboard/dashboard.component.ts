@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ColDef } from 'ag-grid-community';
 import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { AG_GRID_LOCALE_AR } from "./Localisation";
+import { TeacherService } from "src/app/Services/teacher.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +17,13 @@ export class DashboardComponent implements OnInit {
   gridOptions: any;
   AG_GRID_LOCALE_AR = AG_GRID_LOCALE_AR;
 
-  constructor() { }
+  constructor(private teacherService:TeacherService) { }
 
   ngOnInit() {
     this.gridOptions = {
       modules: AllModules
     };
+    this.getAllPendingTeacher();
   }
 
   rowData: any[] | null = [
@@ -328,4 +330,76 @@ export class DashboardComponent implements OnInit {
     filter: "agTextColumnFilter",
     floatingFilter: true,
   };
+
+
+  getAllPendingTeacher():any
+ {
+  console.log(this.teacherService.getAllTeacherPending().subscribe({
+    next:(response)=>
+      { console.log(response)
+        
+      },
+      error:(err)=>
+        {
+          console.log(`error:${err.error}`)
+        }
+  }))
+ }
+
+ Approve(id:string)
+ {
+  this.teacherService.ApproveTeacherProfile(id).subscribe({
+    next:(respon)=>{
+      this.getAllPendingTeacher()
+      console.log(respon);
+
+    },
+    error:(err)=>
+      {
+      this.getAllPendingTeacher()
+        console.log(err);
+      }
+  })
+ }
+
+ sendInfo(id: string, info: string) {
+  console.log(info)
+  console.log(id)
+
+  if (!info.trim()) {
+
+    return; 
+  }else
+  {
+    const aboutTeacher ={
+      accountNote: info.toString(),
+     //  accountNote: " "
+   } 
+    this.teacherService.saveTeacherAccountNote(id,aboutTeacher).subscribe(
+      (response) => {
+        console.log('Update successful:', response);
+      },
+      (error) => {
+        
+      }
+    );
+  }
+
+ 
+}
+ Reject(id:string)
+ {
+  this.teacherService.RejectTeacherProfile(id).subscribe({
+    next:(respon)=>{
+      this.getAllPendingTeacher()
+      console.log(respon);
+    },
+    error:(err)=>
+      {
+        console.log(err);
+        this.getAllPendingTeacher()
+      }
+
+  })
+ }
 }

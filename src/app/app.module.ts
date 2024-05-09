@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AgGridAngular } from 'ag-grid-angular';
     MatPaginatorModule,
     MatInputModule,
     AgGridAngular,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
