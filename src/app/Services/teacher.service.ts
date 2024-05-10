@@ -64,5 +64,25 @@ export class TeacherService {
     console.log(`${url} and Data: ${data}`)
     return this.httpClient.put(url, data);
   }
+
+  getTeachersCount(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/teachers/count`);
+  }
+
+  deleteTeacher(id: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/Teacher/${id}`);
+  }
+
+  getStudentsCount(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/students/count`);
+  }
+
+  deleteStudent(id: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/Student/${id}`);
+  }
+
+
+
+
 }
 
