@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { TeachersPendingComponent } from './Components/teachers-pending/teachers-pending.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     HeaderComponent,
     SideBarComponent,
+    TeachersPendingComponent,
   ],
   imports: [
     BrowserModule,
