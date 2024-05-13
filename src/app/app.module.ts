@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { TeachersPendingComponent } from './Components/teachers-pending/teachers-pending.component';
+import { StudentsComponent } from './Components/students/students.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TeachersPendingComponent } from './Components/teachers-pending/teachers
     HeaderComponent,
     SideBarComponent,
     TeachersPendingComponent,
+    StudentsComponent,
   ],
   imports: [
     BrowserModule,

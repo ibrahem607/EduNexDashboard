@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TeacherService } from 'src/app/Services/teacher.service';
+import { TeacherService } from 'src/app/Services/teacher/teacher.service';
 
 @Component({
   selector: 'app-teachers-pending',
@@ -10,12 +10,12 @@ export class TeachersPendingComponent {
 
  constructor(private teacherService:TeacherService){}
  teacherPendingData: any[] = [];
- addcomment:boolean=false;
+ addcomment:string |null=null;
 
  ngOnInit(): void {
 
   this.getAllPendingTeacher();
-  this.addcomment=false;
+  this.addcomment=null;
  }
 
   getAllPendingTeacher():any
@@ -78,17 +78,18 @@ export class TeachersPendingComponent {
 }
  Reject(id:string)
  {
-  this.teacherService.RejectTeacherProfile(id).subscribe({
-    next:(respon)=>{
-      this.getAllPendingTeacher()
-      console.log(respon);
-    },
-    error:(err)=>
-      {
-        console.log(err);
-        this.getAllPendingTeacher()
-      }
+  this.addcomment = id;
+  // this.teacherService.RejectTeacherProfile(id).subscribe({
+  //   next:(respon)=>{
+  //     this.getAllPendingTeacher()
+  //     console.log(respon);
+  //   },
+  //   error:(err)=>
+  //     {
+  //       console.log(err);
+  //       this.getAllPendingTeacher()
+  //     }
 
-  })
+  // })
  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ColDef } from 'ag-grid-community';
 import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { AG_GRID_LOCALE_AR } from "./Localisation";
-import { TeacherService } from "src/app/Services/teacher.service";
+import { TeacherService } from "src/app/Services/teacher/teacher.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
     this.gridOptions = {
       modules: AllModules
     };
-    this.getAllPendingTeacher();
   }
 
   rowData: any[] | null = [
