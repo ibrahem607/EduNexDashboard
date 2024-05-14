@@ -3,9 +3,11 @@
     <button mat-icon-button class="sideNav-button" (click)="inputSideBar.toggle()">
       <mat-icon aria-hidden="true">menu</mat-icon>
     </button>
-    <h3>EduNex</h3>
+
+    <img *ngIf="isDark()" src="/assets/image/edunex-dark.png" alt="eduNex-dark" class="logo">
+    <img *ngIf="!isDark()" src="/assets/image/edunex-light.png" alt="eduNex-light" class="logo">
   </div>
-  <div class="collapse navbar-collapse flex justify-content-end" id="navbarDropdown">
+  <div class="collapse navbar-collapse flex justify-content-end gap-2" id="navbarDropdown">
 
     <input type="checkbox" id="darkmode-toggle" [formControl]="theme" [checked]="theme.value" />
     <label for="darkmode-toggle">
@@ -61,16 +63,21 @@
       </svg>
     </label>
 
-    <ul class="navbar-nav p-0">
-      <li class="nav-item dropdown" matDropdown>
-        <button class="nav-link dropdown-toggle rounded-5س" [matMenuTriggerFor]="menu">
-          <img src="https://via.placeholder.com/40" alt="profile" class="rounded-5 profile" width="40" height="40">
+    <div class="navbar-nav">
+      <button mat-button class="nav-link dropdown-toggle rounded-5 py-4" [matMenuTriggerFor]="menu">
+        <img src="https://via.placeholder.com/40" alt="profile" class="rounded-5 profile" width="40" height="40">
+      </button>
+      <mat-menu #menu="matMenu" class="py-3 py-sm-0">
+        <button mat-menu-item style="direction: rtl;">
+          <i class="fa-regular fa-circle-user px-2"></i>
+          الملف الشخصي
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>الملف الشخصي</button>
-          <button mat-menu-item>تسجيل الخروج</button>
-        </mat-menu>
-      </li>
-    </ul>
+
+        <button mat-menu-item class="text-danger" style="direction: rtl;">
+          <i class="fa fa-sign-out-alt px-2"></i>
+          تسجيل الخروج
+        </button>
+      </mat-menu>
+    </div>
   </div>
 </mat-toolbar>

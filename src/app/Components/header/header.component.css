@@ -26,8 +26,13 @@ a.sideNav-button:hover {
   box-shadow: var(--wave2) 0px 0px 3px 3px inset;
 }
 
+.dropdown-toggle {
+  background-color: var(--active);
+  border: 1px solid var(--border);
+}
+
 .dropdown-toggle::after {
-  display: none;
+  margin-right: 0.25rem;
 }
 
 label {
@@ -107,7 +112,15 @@ input:active:after {
   width: 2.6px;
 }
 
+.logo {
+  width: 150px;
+}
 
+@media (max-width: 520px) {
+  .logo {
+    width: 125px;
+  }
+}
 
 /* ----------------------------------- */
 
@@ -205,4 +218,8 @@ input:active:after {
   .mdc-notched-outline
   .mdc-notched-outline__trailing {
   border-color: var(--wave2) !important;
+}
+
+::ng-deep .cdk-overlay-pane {
+  margin-top: 0.65rem !important;
 }

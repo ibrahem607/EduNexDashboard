@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   lightClass = 'theme-light';
 
   ngOnInit(): void {
-    const savedTheme = localStorage.getItem('themePreference');
+    const savedTheme = localStorage.getItem('dashThemePreference');
 
     const currentTheme = savedTheme === 'dark';
 
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
       currentTheme = false;
     }
 
-    localStorage.setItem('themePreference', currentTheme ? 'dark' : 'light');
+    localStorage.setItem('dashThemePreference', currentTheme ? 'dark' : 'light');
 
     this.className = currentTheme ? this.darkClass : this.lightClass;
     const bodyElement = document.getElementsByTagName('body')[0];
@@ -47,5 +47,9 @@ export class HeaderComponent implements OnInit {
       bodyElement.classList.add(this.lightClass);
       bodyElement.classList.remove(this.darkClass);
     }
+  }
+
+  isDark() {
+    return localStorage.getItem('dashThemePreference') == 'dark';
   }
 }
