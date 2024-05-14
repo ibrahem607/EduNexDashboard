@@ -331,7 +331,9 @@ export class DashboardComponent implements OnInit {
     floatingFilter: true,
   };
 
-  getAllPendingTeacher():any{
+
+  getAllPendingTeacher():any
+ {
   console.log(this.teacherService.getAllTeacherPending().subscribe({
     next:(response)=>
       { console.log(response)
@@ -378,11 +380,9 @@ export class DashboardComponent implements OnInit {
         console.log('Update successful:', response);
       },
       (error) => {
-
       }
     );
   }
-
 
 }
  Reject(id:string)
