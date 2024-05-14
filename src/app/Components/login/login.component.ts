@@ -13,15 +13,23 @@ export class LoginComponent {
 
   isInputFocused: boolean = false;
   loginForm!: FormGroup;
+  role!: string;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
-  ) { }
+    private snackBar: MatSnackBar,
+  ) {
+    this.role = this.authService.getUserRole();
+  }
 
   ngOnInit() {
+
+    if (this.role == 'Admin') {
+      this.closePage();
+    }
+
     this.loginForm = this.fb.group({
       studentEmail: [
         '',
@@ -82,5 +90,15 @@ export class LoginComponent {
       verticalPosition: 'top',
       horizontalPosition: 'center',
     });
+  }
+
+  closePage() {
+    this.openSnackBar('غير متاح او لا يمكن الوصول', 'حسناً');
+    this.goBackAndRemoveCurrentRoute();
+  }
+
+  goBackAndRemoveCurrentRoute(): void {
+    window.history.back();
+    window.history.replaceState(null, '', this.router.url);
   }
 }

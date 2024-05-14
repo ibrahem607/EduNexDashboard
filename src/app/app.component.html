@@ -2,7 +2,7 @@
   <app-header [inputSideBar]="sideNav"></app-header>
 
   <mat-sidenav-container>
-    <mat-sidenav class="mat-sidenav" position="end" #sideNav mode="side" opened>
+    <mat-sidenav *ngIf="role === 'Admin'" class="mat-sidenav" position="end" #sideNav mode="side" opened>
       <app-side-bar></app-side-bar>
     </mat-sidenav>
 

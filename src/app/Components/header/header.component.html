@@ -1,4 +1,4 @@
-<mat-toolbar class="navbar navbar-expand-lg px-4 w-100" color="primary">
+<mat-toolbar class="navbar navbar-expand-lg px-4 w-100" color="primary" *ngIf="role == 'Admin'">
   <div class="flex">
     <button mat-icon-button class="sideNav-button" (click)="inputSideBar.toggle()">
       <mat-icon aria-hidden="true">menu</mat-icon>
@@ -64,8 +64,8 @@
     </label>
 
     <div class="navbar-nav">
-      <button mat-button class="nav-link dropdown-toggle rounded-5 py-4" [matMenuTriggerFor]="menu">
-        <img src="https://via.placeholder.com/40" alt="profile" class="rounded-5 profile" width="40" height="40">
+      <button *ngIf="userData && userExist()" mat-button class="nav-link dropdown-toggle rounded-5 py-4" [matMenuTriggerFor]="menu">
+        <img [src]="userData.profilePhoto" alt="profile" class="rounded-5 profile" width="40" height="40">
       </button>
       <mat-menu #menu="matMenu" class="py-3 py-sm-0">
         <button mat-menu-item style="direction: rtl;">
@@ -73,7 +73,7 @@
           الملف الشخصي
         </button>
 
-        <button mat-menu-item class="text-danger" style="direction: rtl;">
+        <button mat-menu-item class="text-danger" style="direction: rtl;" (click)="openSignOutDialog()">
           <i class="fa fa-sign-out-alt px-2"></i>
           تسجيل الخروج
         </button>

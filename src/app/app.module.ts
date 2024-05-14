@@ -29,6 +29,7 @@ import { CustomButtonRendererComponent } from './Components/custom-button-render
 import { AcceptRejectComponent } from './Components/Dialog/accept-reject/accept-reject.component';
 import { SendInfoComponent } from './Components/Dialog/send-info/send-info.component';
 import { LoginComponent } from './Components/login/login.component';
+import { SignOutComponent } from './Components/Dialog/sign-out/sign-out.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { LoginComponent } from './Components/login/login.component';
     AcceptRejectComponent,
     SendInfoComponent,
     LoginComponent,
+    SignOutComponent
   ],
   imports: [
     BrowserModule,

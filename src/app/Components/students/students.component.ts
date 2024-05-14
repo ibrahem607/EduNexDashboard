@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/Services/student/student.service';
 import { AG_GRID_LOCALE_AR } from '../dashboard/Localisation';
 import { ColDef } from 'ag-grid-community';
+import { AuthService } from 'src/app/Services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +18,7 @@ export class StudentsComponent implements OnInit {
   paginationPageSize = 10;
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   themeClass: string = "ag-theme-quartz";
+  role!: string;
 
   columnDefs: ColDef[] = [
     { headerName: 'الرمز التعريفي', field: 'id', flex: 3 },
@@ -24,7 +28,13 @@ export class StudentsComponent implements OnInit {
 
   rowData: any[] = [];
 
-  constructor(private stdService: StudentService) { }
+  constructor(
+    private stdService: StudentService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router) {
+    this.role = this.authService.getUserRole();
+  }
 
   ngOnInit(): void {
     this.stdService.getAllStudent().subscribe(
@@ -35,6 +45,9 @@ export class StudentsComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+    if (this.role != 'Admin') {
+      this.closePage();
+    }
   }
 
   defaultColDef: ColDef = {
@@ -42,4 +55,25 @@ export class StudentsComponent implements OnInit {
     floatingFilter: true,
   };
 
+  closePage() {
+    this.openSnackBar('غير متاح او لا يمكن الوصول', 'حسناً');
+
+    setTimeout(() => {
+      this.goBackAndRemoveCurrentRoute();
+    }, 2000);
+  }
+
+  goBackAndRemoveCurrentRoute(): void {
+    window.history.back();
+    window.history.replaceState(null, '', this.router.url);
+    window.location.href = 'https://example.com';
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+    });
+  }
 }

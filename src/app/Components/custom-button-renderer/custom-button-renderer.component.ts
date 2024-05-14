@@ -10,7 +10,7 @@ export class CustomButtonRendererComponent {
 
   agInit(params: any): void {
     this.params = params;
-    console.log(params.buttons)
+    // console.log(params.buttons)
   }
 
   onClick(action: any): void {
