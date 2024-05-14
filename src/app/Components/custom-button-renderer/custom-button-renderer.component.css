@@ -1,0 +1,22 @@
+.action-buttons button {
+  background-color: transparent;
+  color: var(--bgHeader);
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.action-buttons button:active {
+  scale: 0.97;
+}
+
+.approve:hover {
+  color: var(--wave4) !important;
+}
+
+.reject:hover {
+  color: var(--wave6) !important;
+}
+
+.sendInfo:hover {
+  color: #00aeef !important;
+}

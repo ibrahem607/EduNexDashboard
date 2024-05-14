@@ -9,7 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,13 @@ import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
-import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridAngular} from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { TeachersPendingComponent } from './Components/teachers-pending/teachers-pending.component';
+import { StudentsComponent } from './Components/students/students.component';
+import { CustomButtonRendererComponent } from './Components/custom-button-renderer/custom-button-renderer.component';
+import { AcceptRejectComponent } from './Components/Dialog/accept-reject/accept-reject.component';
+import { SendInfoComponent } from './Components/Dialog/send-info/send-info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,11 @@ import { AgGridAngular } from 'ag-grid-angular';
     DashboardComponent,
     HeaderComponent,
     SideBarComponent,
+    TeachersPendingComponent,
+    StudentsComponent,
+    CustomButtonRendererComponent,
+    AcceptRejectComponent,
+    SendInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +59,9 @@ import { AgGridAngular } from 'ag-grid-angular';
     MatPaginatorModule,
     MatInputModule,
     AgGridAngular,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
