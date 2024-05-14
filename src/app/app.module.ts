@@ -24,6 +24,8 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { TeachersPendingComponent } from './Components/teachers-pending/teachers-pending.component';
 import { StudentsComponent } from './Components/students/students.component';
+import { LoginComponent } from './Components/login/login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { StudentsComponent } from './Components/students/students.component';
     SideBarComponent,
     TeachersPendingComponent,
     StudentsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { StudentsComponent } from './Components/students/students.component';
     MatInputModule,
     AgGridAngular,
     HttpClientModule,
+    MatSnackBarModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]
