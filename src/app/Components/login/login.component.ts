@@ -35,12 +35,12 @@ export class LoginComponent {
       password: ['', Validators.required],
     });
 
-    setTimeout(() => {
-      if (this.authService.getUserId()) {
-        this.router.navigate(['/']);
-        this.openSnackBar('غير متاح او لا يمكن الوصول', 'حسناً');
-      }
-    }, 0);
+    // setTimeout(() => {
+    //   if (this.authService.getUserId()) {
+    //     this.router.navigate(['/']);
+    //     this.openSnackBar('غير متاح او لا يمكن الوصول', 'حسناً');
+    //   }
+    // }, 0);
   }
 
   get studentEmail() {
