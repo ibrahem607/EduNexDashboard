@@ -12,11 +12,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  baseUrl: string = environment.API_KEY;
-  tokenKey: string = 'auth_token';
+  baseUrl: string = 'http://localhost:5293';
+  tokenKey: string = 'admin_token';
   teacherId: any = '';
-  currentUserId: string = 'UserId';
-  currentUserRole: string = 'UserRole';
+  currentUserId: string = 'adminId';
+  currentUserRole: string = 'Role';
   IsLogin: any = new BehaviorSubject(null);
   IsUser!: boolean;
 
