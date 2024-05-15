@@ -44,9 +44,9 @@ export class AuthService {
               horizontalPosition: 'right',
               panelClass: 'snackbar-success'
             });
-            this.router.navigate(['/pending']);
-            location.reload();
 
+            location.reload();
+            this.router.navigate(['/pendingTeachers']);
           } else {
 
             this.snackBar.open(`خطأ في عنوان البريد او كلمة السر`, 'Close', {

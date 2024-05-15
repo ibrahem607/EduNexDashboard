@@ -47,7 +47,7 @@ export class ExamsComponent implements OnInit {
     this.examService.getAllExams().subscribe(
       (data) => {
         this.rowData = data;
-        console.log(data);
+        // console.log(data);
       },
       (error) => {
         console.error('Error:', error);

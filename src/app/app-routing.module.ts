@@ -12,7 +12,7 @@ import { GenerateCouponComponent } from './Components/generate-coupon/generate-c
 const routes: Routes = [
   { path: 'students', component: StudentsComponent, data: { title: 'Students' } },
   { path: 'teachers', component: TeachersComponent, data: { title: 'Teachers' } },
-  { path: 'pending', component: TeachersPendingComponent, data: { title: 'PendingTeachers' } },
+  { path: 'pendingTeachers', component: TeachersPendingComponent, data: { title: 'PendingTeachers' } },
   { path: 'courses', component: CoursesComponent, data: { title: 'Courses' } },
   { path: 'exams', component: ExamsComponent, data: { title: 'Exams' } },
   { path: 'wallets', component: WalletsComponent, data: { title: 'Wallets' } },
