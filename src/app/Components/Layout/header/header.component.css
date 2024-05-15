@@ -223,3 +223,10 @@ input:active:after {
 ::ng-deep .cdk-overlay-pane {
   margin-top: 0.65rem !important;
 }
+
+::ng-deep
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
+  .mdc-list-item__primary-text,
+::ng-deep .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+  color: #4bb543 !important;
+}
