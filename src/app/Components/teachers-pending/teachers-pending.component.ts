@@ -6,9 +6,8 @@ import { CustomButtonRendererComponent } from '../custom-button-renderer/custom-
 import { AcceptRejectComponent } from '../Dialog/accept-reject/accept-reject.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SendInfoComponent } from '../Dialog/send-info/send-info.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/Services/auth/auth.service';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-teachers-pending',
@@ -23,7 +22,6 @@ export class TeachersPendingComponent implements OnInit {
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   themeClass: string = "ag-theme-quartz";
   gridOptions: GridOptions;
-  role!: string;
 
   columnDefs: ColDef[] = [
     { headerName: 'الرمز التعريفي', field: 'id', flex: 1 },
@@ -81,12 +79,9 @@ export class TeachersPendingComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private authService: AuthService
+    private route: ActivatedRoute,
+    private titleService: Title
   ) {
-    this.role = this.authService.getUserRole();
-
     this.gridOptions = {
       components: {
         customButtonRenderer: CustomButtonRendererComponent,
@@ -95,10 +90,10 @@ export class TeachersPendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const pageTitle = this.route.snapshot.data['title'];
+    this.titleService.setTitle(pageTitle);
+
     this.getAllPendingTeacher();
-    if (this.role != 'Admin') {
-      this.closePage();
-    }
   }
 
   getAllPendingTeacher(): void {
@@ -142,29 +137,4 @@ export class TeachersPendingComponent implements OnInit {
     filter: "agTextColumnFilter",
     floatingFilter: true,
   };
-
-  closePage() {
-    this.openSnackBar('غير متاح او لا يمكن الوصول', 'حسناً');
-
-    setTimeout(() => {
-      this.goBackAndRemoveCurrentRoute();
-    }, 2000);
-  }
-
-  goBackAndRemoveCurrentRoute(): void {
-    window.history.back();
-    window.history.replaceState(null, '', this.router.url);
-    window.location.href = 'https://example.com';
-  }
-
-  openSnackBar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-    });
-  }
-  // onButtonClick(id: string): void {
-  //   console.log('Button clicked for ID:', id);
-  // }
 }

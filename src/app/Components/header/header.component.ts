@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
     this.techServices.getTeacherById(this.authService.getUserId()).subscribe({
       next: (data => {
         this.userData = data;
-        console.log(data)
+        // console.log(data)
       })
     })
   }

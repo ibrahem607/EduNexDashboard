@@ -2,18 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environment';
 import { Observable } from 'rxjs';
+import { ICourse } from 'src/app/model/icourse';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class CoursesService {
 
   URL = environment.API_KEY;
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllStudent(): Observable<any> {
-    return this.httpClient.get(`${this.URL}/students`);
+  getAllCourses(): Observable<ICourse[]> {
+    return this.httpClient.get<ICourse[]>(`${this.URL}/api/Courses`);
   }
-
 }

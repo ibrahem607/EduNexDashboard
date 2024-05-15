@@ -43,9 +43,8 @@ export class AuthService {
               horizontalPosition: 'right',
               panelClass: 'snackbar-success'
             });
-            if (localStorage.getItem(this.currentUserRole) == "Admin") {
-              this.reloadCurrentRoute()
-            }
+
+            location.reload();
 
           } else {
 
@@ -123,11 +122,10 @@ export class AuthService {
     return this.httpClient.post<void>(`${this.baseUrl}/api/Auth/logout`, null);
   }
 
-  reloadCurrentRoute(): void {
-    const currentUrl = this.router.url;
-    location.reload();
-    // this.router.navigateByUrl('/students', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate([currentUrl]);
-    // });
-  }
+  // reloadCurrentRoute(): void {
+  // const currentUrl = this.router.url;
+  // this.router.navigateByUrl('/students', { skipLocationChange: true }).then(() => {
+  //   this.router.navigate([currentUrl]);
+  // });
+  // }
 }

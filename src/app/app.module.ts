@@ -30,6 +30,11 @@ import { AcceptRejectComponent } from './Components/Dialog/accept-reject/accept-
 import { SendInfoComponent } from './Components/Dialog/send-info/send-info.component';
 import { LoginComponent } from './Components/login/login.component';
 import { SignOutComponent } from './Components/Dialog/sign-out/sign-out.component';
+import { CoursesComponent } from './Components/courses/courses.component';
+import { TeachersComponent } from './Components/teachers/teachers.component';
+import { ExamsComponent } from './Components/exams/exams.component';
+import { WalletsComponent } from './Components/wallets/wallets.component';
+import { TransactionsComponent } from './Components/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import { SignOutComponent } from './Components/Dialog/sign-out/sign-out.componen
     AcceptRejectComponent,
     SendInfoComponent,
     LoginComponent,
-    SignOutComponent
+    SignOutComponent,
+    CoursesComponent,
+    TeachersComponent,
+    ExamsComponent,
+    WalletsComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,

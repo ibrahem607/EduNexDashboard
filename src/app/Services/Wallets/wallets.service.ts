@@ -6,14 +6,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class WalletsService {
 
   URL = environment.API_KEY;
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllStudent(): Observable<any> {
-    return this.httpClient.get(`${this.URL}/students`);
+  getAllWallets(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.URL}/GetALLWallets`);
   }
-
 }

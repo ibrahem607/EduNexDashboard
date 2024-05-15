@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from 'src/app/Services/student/student.service';
 import { AG_GRID_LOCALE_AR } from '../dashboard/Localisation';
 import { ColDef } from 'ag-grid-community';
-import { ActivatedRoute } from '@angular/router';
+import { CoursesService } from 'src/app/Services/Courses/courses.service';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
 })
-export class StudentsComponent implements OnInit {
+export class CoursesComponent implements OnInit {
   AG_GRID_LOCALE_AR = AG_GRID_LOCALE_AR;
   rowSelection: "single" | "multiple" = "multiple";
   paginationPageSize = 10;
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   themeClass: string = "ag-theme-quartz";
+  role!: string;
 
   columnDefs: ColDef[] = [
-    { headerName: 'الرمز التعريفي', field: 'id', flex: 3 },
-    { headerName: 'الأسم الأول', field: 'firstName', flex: 2 },
-    { headerName: 'الأسم الأخير', field: 'lastName', flex: 2 },
+    { headerName: 'الرمز التعريفي', field: 'id', flex: 1 },
+    { headerName: 'اسم الدورة', field: 'courseName', flex: 1 },
+    { headerName: 'نوع الدورة', field: 'courseType', flex: 1 },
+    { headerName: 'المدرس', field: 'teacherName', flex: 1 },
+    { headerName: 'المستوى', field: 'levelName', flex: 1 },
   ];
 
   rowData: any[] = [];
 
   constructor(
-    private stdService: StudentService,
+    private courseService: CoursesService,
     private route: ActivatedRoute,
     private titleService: Title
   ) { }
@@ -35,9 +38,14 @@ export class StudentsComponent implements OnInit {
     const pageTitle = this.route.snapshot.data['title'];
     this.titleService.setTitle(pageTitle);
 
-    this.stdService.getAllStudent().subscribe(
+    this.getCourses();
+  }
+
+  getCourses() {
+    this.courseService.getAllCourses().subscribe(
       (data) => {
         this.rowData = data;
+        // console.log(data);
       },
       (error) => {
         console.error('Error:', error);

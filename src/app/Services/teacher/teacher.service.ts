@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environment';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class TeacherService {
 
-  baseUrl: string = 'http://localhost:5293';
+  baseUrl = environment.API_KEY;
   TeacherAbout: string = '';
 
   constructor(private httpClient: HttpClient) { }
@@ -35,7 +36,7 @@ export class TeacherService {
 
   ApproveTeacherProfile(id: string): Observable<any> {
     const url = `${this.baseUrl}/teachers/approve/${id}`;
-    console.log('URL:', url);
+    // console.log('URL:', url);
     return this.httpClient.put(url, {});
   }
 
@@ -45,7 +46,7 @@ export class TeacherService {
 
   getTeacherById(id: any): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/teacher/${id}`).pipe(map(response => {
-      console.log(response);
+      // console.log(response);
       return response
     }))
   }
@@ -58,7 +59,7 @@ export class TeacherService {
 
   updateTeacherProfile(id: string, data: any): Observable<any> {
     const url = `${this.baseUrl}/api/Teacher/${id}`;
-    console.log(`${url} and Data: ${data}`)
+    // console.log(`${url} and Data: ${data}`)
     return this.httpClient.put(url, data);
   }
 
@@ -78,8 +79,8 @@ export class TeacherService {
     return this.httpClient.delete<any>(`${this.baseUrl}/Student/${id}`);
   }
 
-
-
-
+  getAllTeachers(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/teachers`);
+  }
 }
 

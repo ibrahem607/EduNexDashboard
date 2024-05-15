@@ -36,6 +36,7 @@ export class SignOutComponent {
         console.log('Logout successful');
         this.router.navigate(['/']);
         this.cdRef.detectChanges();
+        location.reload();
       },
       error => {
         console.error('Logout failed:', error);

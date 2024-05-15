@@ -6,10 +6,15 @@
       <app-side-bar></app-side-bar>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content *ngIf="role === 'Admin'">
       <div class="mainContent">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
+</div>
+
+<div *ngIf="role !== 'Admin'">
+  <app-login></app-login>
 </div>

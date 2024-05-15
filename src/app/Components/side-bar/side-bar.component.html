@@ -7,15 +7,40 @@
 
   <hr>
 
-  <div class="d-flex flex-column gap-3 navigation-buttons">
-    <button mat-button routerLink="/students" routerLinkActive="active"><i class="fas fa-user-friends"></i>
-      الطلاب المنصة
+  <div class="d-flex flex-column gap-1 navigation-buttons">
+    <button mat-button routerLink="pending" routerLinkActive="active">
+      <i class="fas fa-chalkboard-teacher icon"></i>
+      <span class="text">المدرسين الجدد</span>
     </button>
 
-    <!-- <button mat-button routerLink="/courses" routerLinkActive="active"><i class="fas fa-book"></i> الكورسات</button> -->
+    <button mat-button routerLink="/students" routerLinkActive="active">
+      <i class="fas fa-graduation-cap icon"></i>
+      <span class="text">الطلاب</span>
+    </button>
 
-    <button mat-button routerLink="teachers/pending" routerLinkActive="active"><i class="fas fa-user-graduate"></i>
-      المدرسين الجدد
+    <button mat-button routerLink="/teachers" routerLinkActive="active">
+      <i class="fas fa-user-tie icon"></i>
+      <span class="text">المدرسين</span>
+    </button>
+
+    <button mat-button routerLink="/courses" routerLinkActive="active">
+      <i class="fas fa-book-open icon"></i>
+      <span class="text">الكورسات</span>
+    </button>
+
+    <button mat-button routerLink="/exams" routerLinkActive="active">
+      <i class="fas fa-clipboard-list icon"></i>
+      <span class="text">الامتحانات</span>
+    </button>
+
+    <button mat-button routerLink="/wallets" routerLinkActive="active">
+      <i class="fas fa-wallet icon"></i>
+      <span class="text">المحافظ</span>
+    </button>
+
+    <button mat-button routerLink="/transactions" routerLinkActive="active">
+      <i class="fas fa-money-bill-wave icon"></i>
+      <span class="text">العمليات</span>
     </button>
   </div>
 

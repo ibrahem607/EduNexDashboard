@@ -1,32 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from 'src/app/Services/student/student.service';
 import { AG_GRID_LOCALE_AR } from '../dashboard/Localisation';
 import { ColDef } from 'ag-grid-community';
+import { ExamsService } from 'src/app/Services/Exams/exams.service';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-exams',
+  templateUrl: './exams.component.html',
+  styleUrls: ['./exams.component.css']
 })
-export class StudentsComponent implements OnInit {
+export class ExamsComponent implements OnInit {
   AG_GRID_LOCALE_AR = AG_GRID_LOCALE_AR;
   rowSelection: "single" | "multiple" = "multiple";
   paginationPageSize = 10;
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   themeClass: string = "ag-theme-quartz";
+  role!: string;
 
   columnDefs: ColDef[] = [
-    { headerName: 'الرمز التعريفي', field: 'id', flex: 3 },
-    { headerName: 'الأسم الأول', field: 'firstName', flex: 2 },
-    { headerName: 'الأسم الأخير', field: 'lastName', flex: 2 },
+    { headerName: 'الرمز التعريفي', field: 'id', flex: 1 },
+    { headerName: 'عنوان الامتحان', field: 'title', flex: 1 },
+    { headerName: 'وقت البدء', field: 'startDateTime', flex: 1 },
+    { headerName: 'وقت الانتهاء', field: 'endDateTime', flex: 1 },
+    { headerName: 'المدة (دقائق)', field: 'duration', flex: 1 },
+    { headerName: 'نوع الامتحان', field: 'type', flex: 1 },
+    { headerName: 'رقم المحاضرة', field: 'lectureId', flex: 1 },
   ];
 
   rowData: any[] = [];
 
   constructor(
-    private stdService: StudentService,
+    private examService: ExamsService,
     private route: ActivatedRoute,
     private titleService: Title
   ) { }
@@ -35,9 +40,14 @@ export class StudentsComponent implements OnInit {
     const pageTitle = this.route.snapshot.data['title'];
     this.titleService.setTitle(pageTitle);
 
-    this.stdService.getAllStudent().subscribe(
+    this.getAllExams();
+  }
+
+  getAllExams() {
+    this.examService.getAllExams().subscribe(
       (data) => {
         this.rowData = data;
+        console.log(data);
       },
       (error) => {
         console.error('Error:', error);
