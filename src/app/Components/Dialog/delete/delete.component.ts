@@ -54,7 +54,7 @@ export class DeleteComponent {
   }
 
   DeleteTeacher(id: string): void {
-    this.teacherService.ApproveTeacherProfile(id).subscribe({
+    this.teacherService.deleteTeacher(id).subscribe({
       next: (respon) => {
         console.log(respon);
         this.reloadCurrentRoute();

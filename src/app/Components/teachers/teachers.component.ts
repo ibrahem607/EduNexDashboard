@@ -82,7 +82,9 @@ export class TeachersComponent implements OnInit {
     );
   }
 
+
   openDeleteDialog(id: string, action: string): void {
+    
     this.dialog.open(DeleteComponent, {
       width: '450px',
       panelClass: 'dialog-container',
