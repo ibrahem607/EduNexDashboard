@@ -16,4 +16,11 @@ export class StudentService {
     return this.httpClient.get(`${this.URL}/students`);
   }
 
+  getStudentsCount(): Observable<any> {
+    return this.httpClient.get<any>(`${this.URL}/students/count`);
+  }
+
+  deleteStudent(id: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.URL}/Student/${id}`);
+  }
 }

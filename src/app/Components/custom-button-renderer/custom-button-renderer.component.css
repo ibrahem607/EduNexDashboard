@@ -13,7 +13,7 @@
   color: var(--wave4) !important;
 }
 
-.reject:hover {
+.reject:hover,.delete:hover {
   color: var(--wave6) !important;
 }
 

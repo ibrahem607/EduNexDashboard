@@ -4,6 +4,9 @@ import { ColDef } from 'ag-grid-community';
 import { TeacherService } from 'src/app/Services/teacher/teacher.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { DeleteComponent } from '../Dialog/delete/delete.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomButtonRendererComponent } from '../custom-button-renderer/custom-button-renderer.component';
 
 @Component({
   selector: 'app-teachers',
@@ -26,18 +29,39 @@ export class TeachersComponent implements OnInit {
     { headerName: 'الهاتف', field: 'phoneNumber', flex: 1 },
     { headerName: 'الجنس', field: 'gender', flex: 1 },
     { headerName: 'العنوان', field: 'address', flex: 1 },
-    // { headerName: 'تاريخ الميلاد', field: 'dateOfBirth', flex: 1 },
     { headerName: 'حساب الفيسبوك', field: 'facebookAccount', flex: 1 },
-    { headerName: 'الحالة', field: 'status', flex: 1 }
+    { headerName: 'الحالة', field: 'status', flex: 1 },
+    {
+      headerName: 'حذف',
+      cellRenderer: 'customButtonRenderer',
+      flex: 1,
+      cellRendererParams: {
+        buttons: [
+          {
+            text: 'delete',
+            icon: '<i class="fa fa-trash"></i>',
+            action: (id: string) => this.openDeleteDialog(id, 'teacher')
+          }
+        ]
+      }
+    },
   ];
 
   rowData: any[] = [];
+  gridOptions: { components: { customButtonRenderer: typeof CustomButtonRendererComponent; }; };
 
   constructor(
     private teacherService: TeacherService,
     private route: ActivatedRoute,
-    private titleService: Title
-  ) { }
+    private titleService: Title,
+    public dialog: MatDialog
+  ) {
+    this.gridOptions = {
+      components: {
+        customButtonRenderer: CustomButtonRendererComponent,
+      },
+    };
+  }
 
   ngOnInit(): void {
     const pageTitle = this.route.snapshot.data['title'];
@@ -56,6 +80,20 @@ export class TeachersComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+  }
+
+  openDeleteDialog(id: string, action: string): void {
+    this.dialog.open(DeleteComponent, {
+      width: '450px',
+      panelClass: 'dialog-container',
+      autoFocus: false,
+      data: {
+        message: 'هل انت متاكد من حذف المدرس',
+        confirmButtonText: 'حذف المدرس',
+        action: action,
+        id: id
+      }
+    });
   }
 
   defaultColDef: ColDef = {

@@ -35,6 +35,7 @@ import { TeachersComponent } from './Components/teachers/teachers.component';
 import { ExamsComponent } from './Components/exams/exams.component';
 import { WalletsComponent } from './Components/wallets/wallets.component';
 import { TransactionsComponent } from './Components/transactions/transactions.component';
+import { DeleteComponent } from './Components/Dialog/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TransactionsComponent } from './Components/transactions/transactions.co
     TeachersComponent,
     ExamsComponent,
     WalletsComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

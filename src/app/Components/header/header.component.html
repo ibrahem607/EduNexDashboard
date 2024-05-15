@@ -70,7 +70,8 @@
       <mat-menu #menu="matMenu" class="py-3 py-sm-0">
         <button mat-menu-item style="direction: rtl;">
           <i class="fa-regular fa-circle-user px-2"></i>
-          الملف الشخصي
+          <!-- الملف الشخصي -->
+          {{userData.firstName}} {{userData.lastName}}
         </button>
 
         <button mat-menu-item class="text-danger" style="direction: rtl;" (click)="openSignOutDialog()">
