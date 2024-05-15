@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AuthService {
 
   baseUrl: string = 'http://localhost:5293';
-  tokenKey: string = 'auth_token';
+  tokenKey: string = 'admin_token';
   teacherId: any = '';
   currentUserId: string = 'UserId';
   currentUserRole: string = 'UserRole';
