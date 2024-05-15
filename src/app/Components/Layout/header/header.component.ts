@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from 'src/app/Services/auth/auth.service';
 import { TeacherService } from 'src/app/Services/teacher/teacher.service';
-import { SignOutComponent } from '../Dialog/sign-out/sign-out.component';
+import { SignOutComponent } from '../../Dialog/sign-out/sign-out.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

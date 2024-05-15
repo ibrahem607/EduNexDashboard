@@ -16,12 +16,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { HeaderComponent } from './Components/header/header.component';
-import { SideBarComponent } from './Components/side-bar/side-bar.component';
+import { HeaderComponent } from './Components/Layout/header/header.component';
+import { SideBarComponent } from './Components/Layout/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
-import { AgGridAngular} from 'ag-grid-angular';
+import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { TeachersPendingComponent } from './Components/teachers-pending/teachers-pending.component';
 import { StudentsComponent } from './Components/students/students.component';
@@ -36,6 +36,8 @@ import { ExamsComponent } from './Components/exams/exams.component';
 import { WalletsComponent } from './Components/wallets/wallets.component';
 import { TransactionsComponent } from './Components/transactions/transactions.component';
 import { DeleteComponent } from './Components/Dialog/delete/delete.component';
+import { GenerateCouponComponent } from './Components/generate-coupon/generate-coupon.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { DeleteComponent } from './Components/Dialog/delete/delete.component';
     ExamsComponent,
     WalletsComponent,
     TransactionsComponent,
-    DeleteComponent
+    DeleteComponent,
+    GenerateCouponComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { DeleteComponent } from './Components/Dialog/delete/delete.component';
     AgGridAngular,
     HttpClientModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { TeachersComponent } from './Components/teachers/teachers.component';
 import { ExamsComponent } from './Components/exams/exams.component';
 import { WalletsComponent } from './Components/wallets/wallets.component';
 import { TransactionsComponent } from './Components/transactions/transactions.component';
+import { GenerateCouponComponent } from './Components/generate-coupon/generate-coupon.component';
 
 const routes: Routes = [
   { path: 'students', component: StudentsComponent, data: { title: 'Students' } },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'exams', component: ExamsComponent, data: { title: 'Exams' } },
   { path: 'wallets', component: WalletsComponent, data: { title: 'Wallets' } },
   { path: 'transactions', component: TransactionsComponent, data: { title: 'Transactions' } },
+  { path: 'generateCoupon', component: GenerateCouponComponent, data: { title: 'generateCoupon' } }
 ];
 
 @NgModule({

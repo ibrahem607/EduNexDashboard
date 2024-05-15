@@ -5,13 +5,14 @@ import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, Observable, catchError, tap, throwError, window } from 'rxjs';
 import { CustomJwtPayload } from 'src/app/model/CustomJwtPayload';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  baseUrl: string = 'http://localhost:5293';
+  baseUrl: string = environment.API_KEY;
   tokenKey: string = 'auth_token';
   teacherId: any = '';
   currentUserId: string = 'UserId';
@@ -43,7 +44,7 @@ export class AuthService {
               horizontalPosition: 'right',
               panelClass: 'snackbar-success'
             });
-
+            this.router.navigate(['/pending']);
             location.reload();
 
           } else {

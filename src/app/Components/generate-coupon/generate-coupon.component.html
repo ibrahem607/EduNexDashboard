@@ -1,0 +1,76 @@
+<section class="container flex justify-content-center" dir="rtl">
+  <div class="col-md-7 px-4">
+    <div class="text-center mt-5">
+      <h3 class="text-second mb-4" style="color: orange;  font-weight: 700;"> إنشاء كوبون </h3>
+    </div>
+
+    <div *ngIf="generatedCoupon">
+      <div class="row mb-2 text-success">
+        <div class="col">
+          <!-- <p>تم أنشاء {{ generatedCoupon.couponType === 1 ? 'كوبون خصم' : 'كوبون شحن' }}</p> -->
+          <p><strong>كود الكوبون:</strong> {{ generatedCoupon.couponCode }}</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-floating" action="" method="" [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>قيمة الكوبون</mat-label>
+            <input matInput type="number" name="value" formControlName="value" id="value" placeholder="قيمة الكوبون"
+              aria-label="قيمة الكوبون" required>
+            <mat-icon matSuffix>attach_money</mat-icon>
+            <mat-error *ngIf="value?.touched && value?.invalid">
+              <span class="text-danger" *ngIf="value?.errors?.['required']">قيمة الكوبون مطلوبة</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>عدد مرات الاستخدام</mat-label>
+            <input matInput type="number" name="numberOfUses" formControlName="numberOfUses" id="numberOfUses"
+              placeholder="عدد مرات الاستخدام" aria-label="عدد مرات الاستخدام" required>
+            <mat-icon matSuffix>event_available</mat-icon>
+            <mat-error *ngIf="numberOfUses?.touched && numberOfUses?.invalid">
+              <span class="text-danger" *ngIf="numberOfUses?.errors?.['required']">عدد مرات الاستخدام مطلوب</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>عدد الأيام الصالحة</mat-label>
+            <input matInput type="number" name="dayValid" formControlName="dayValid" id="dayValid"
+              placeholder="عدد الأيام الصالحة" aria-label="عدد الأيام الصالحة" required>
+            <mat-icon matSuffix>calendar_today</mat-icon>
+            <mat-error *ngIf="dayValid?.touched && dayValid?.invalid">
+              <span class="text-danger" *ngIf="dayValid?.errors?.['required']">عدد الأيام الصالحة مطلوب</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>نوع الكوبون</mat-label>
+            <mat-select formControlName="couponType" id="couponType" placeholder="نوع الكوبون" required>
+              <mat-option value="1">كوبون خصم</mat-option>
+              <mat-option value="0">كوبون شحن</mat-option>
+            </mat-select>
+            <mat-error *ngIf="couponType?.touched && couponType?.invalid">
+              <span class="text-danger" *ngIf="couponType?.errors?.['required']">نوع الكوبون مطلوب</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-grid gap-3 text-center my-4">
+        <button mat-button class="rounded-5 custom-button" type="submit">إنشاء كوبون</button>
+      </div>
+    </form>
+  </div>
+</section>

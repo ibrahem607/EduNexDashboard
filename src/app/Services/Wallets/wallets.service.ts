@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/app/Environment/environment';
+
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class WalletsService {
 
   getAllWallets(): Observable<any[]> {
     return this.httpClient.get<any[]>(`${this.URL}/GetALLWallets`);
+  }
+
+  generateCoupon(couponData: any): Observable<any[]> {
+    return this.httpClient.post<any[]>(`${this.URL}/api/Coupon/generate`, couponData);
   }
 }

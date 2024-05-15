@@ -10,7 +10,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   isInputFocused: boolean = false;
   loginForm!: FormGroup;
   role!: string;
