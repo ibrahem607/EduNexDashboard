@@ -58,7 +58,7 @@ export class GenerateCouponComponent {
         couponType: this.couponForm.value.couponType
       };
 
-      console.log(formData);
+      // console.log(formData);
 
       this.walletService.generateCoupon(formData).subscribe({
         next: (data) => {
@@ -78,6 +78,7 @@ export class GenerateCouponComponent {
       this.couponForm.markAllAsTouched();
     }
   }
+
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
