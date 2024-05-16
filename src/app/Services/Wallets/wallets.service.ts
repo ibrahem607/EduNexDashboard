@@ -21,7 +21,7 @@ export class WalletsService {
     return this.httpClient.post<any[]>(`${this.URL}/api/Coupon/generate`, couponData);
   }
 
-  getWalletBalance(studentId: string): Observable<number> {
-    return this.httpClient.get<number>(`${this.URL}/GetWalletBalance?ownerId=${studentId}`);
+  getWalletBalance(): Observable<any> {
+    return this.httpClient.get<any>(`${this.URL}/api/PurchaseLogs/CalculateBalance`);
   }
 }

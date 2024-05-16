@@ -17,7 +17,7 @@ export class WalletsComponent implements OnInit{
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   themeClass: string = "ag-theme-quartz";
   role!: string;
-  balance!: number;
+  balance!: any;
 
   columnDefs: ColDef[] = [
     { headerName: 'رقم المحفظة', field: 'walletId', flex: 1 },
@@ -44,9 +44,10 @@ export class WalletsComponent implements OnInit{
   }
 
   getWalletBalance() {
-    this.walletService.getWalletBalance(this.authData.getUserId())
+    this.walletService.getWalletBalance()
       .subscribe(balance => {
-        this.balance = balance;
+        // console.log(balance)
+        this.balance = balance.resultData;
       });
   }
 
