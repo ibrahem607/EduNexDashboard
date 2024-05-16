@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  baseUrl: string = 'http://localhost:5293';
+  baseUrl: string = environment.API_KEY;
   tokenKey: string = 'admin_token';
   teacherId: any = '';
   currentUserId: string = 'adminId';
@@ -58,9 +58,7 @@ export class AuthService {
             this.removeToken();
             this.removeUserId();
             this.removeUserRole();
-
           }
-
         }
       }),
       catchError(error => {
