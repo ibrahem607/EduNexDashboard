@@ -94,6 +94,6 @@ export class HeaderComponent implements OnInit {
   }
 
   userExist() {
-    return localStorage.getItem('UserId');
+    return localStorage.getItem('adminId');
   }
 }
